@@ -1,0 +1,8 @@
+<div class="card" (click)="goToDetails(article.id)">
+    <img [src]="article.imageUrl" class="card-img-top" alt="Card image">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.title | slice:0:60 }}{{ article.title.length > 60 ? '...' : '' }}</h5>
+      <p class="card-text">{{ article.content | slice:0:100 }}{{ article.content.length > 120 ? '...' : '' }}</p>
+    </div>
+</div>
+  

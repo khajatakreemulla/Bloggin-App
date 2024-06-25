@@ -1,0 +1,28 @@
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="authModalLabel">Authentication</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" [class.active]="isTabActive('signin')" (click)="setActiveTab('signin')">Sign In</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#" [class.active]="isTabActive('register')" (click)="setActiveTab('register')">Register</a>
+                  </li>
+              </ul>
+              <div class="tab-content mt-3">
+                  <div *ngIf="activeTab === 'signin'">
+                      <app-signin [successMessage]="successMessage" (signInSuccess)="handleSignInSuccess($event)"></app-signin>
+                  </div>
+                  <div *ngIf="activeTab === 'register'">
+                      <app-signup (registrationSuccess)="handleRegistrationSuccess($event)"></app-signup>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

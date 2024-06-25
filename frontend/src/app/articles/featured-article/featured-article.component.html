@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="text-center">Featured</h1>
+    <hr>
+    <div class="row mt-5">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let article of articles">
+          <app-article-card [article]="article"></app-article-card>
+        </div>
+    </div>
+</div>

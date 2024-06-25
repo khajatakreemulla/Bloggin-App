@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">DevWrite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <div class="search-container">
+              <button class="btn btn-outline-light" (click)="toggleSearch()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+              </button>
+              <div *ngIf="showSearch" class="search-input d-flex align-items-center">
+                <input type="text" class="form-control form-control-lg" placeholder="Search..." #searchInput>
+                <button class="btn btn-primary" (click)="search(searchInput.value)">Search</button>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <ng-container *ngIf="isAuthenticated(); else signInTemplate">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-center" routerLink="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://scontent.fhyd18-1.fna.fbcdn.net/v/t39.30808-6/366996841_856684082481098_8756972728894965534_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=HBLZLa16TToQ7kNvgHZ8RHy&_nc_ht=scontent.fhyd18-1.fna&oh=00_AYDNPhwngBDET_DPBd0SpCryvi7oG-Mofs7gC_Fvq8kB7A&oe=6680BE23" alt="Profile Image" class="navbar-profile-img">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
+                  <li><a class="dropdown-item text-center" routerLink="#">Profile</a></li>
+                  <li><a class="dropdown-item text-center" routerLink="/user/dashboard">Dashboard</a></li>
+                  <li><a class="dropdown-item text-center" routerLink="#" (click)="logout()">Log out</a></li>
+                </ul>
+              </li>
+            </ng-container>
+            <ng-template #signInTemplate>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">Sign In</button>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<app-modal (signInSuccess)="handleSignInSuccess()" #authModel></app-modal>
+  
