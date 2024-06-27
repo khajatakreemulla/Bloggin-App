@@ -6,6 +6,7 @@ const cors = require('cors');
 const session = require("express-session");
 const authRoutes = require('./Routes/authRoutes');
 const userRoutes = require("./Routes/userRoutes");
+const articleRoutes = require("./Routes/articleRoutes")
 const config = require('./Config/config');
 
 const app = express();
@@ -43,7 +44,8 @@ mongoose.connect(config.mongoURI)
 
 // Routes
 app.use('/auth', authRoutes);
-app.use("/user", userRoutes); // Corrected typo here
+app.use("/user", userRoutes); 
+app.use("/article", articleRoutes)
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

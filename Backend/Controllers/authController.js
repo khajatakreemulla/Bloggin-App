@@ -33,20 +33,20 @@ exports.login = async (req, res) => {
         // Check if user exists
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ error: 'Invalid credentials' });
+            return res.status(400).json({ errorMessage: 'Invalid credentials' });
         }
         // Validate password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ error: 'Invalid credentials' });
+            return res.status(400).json({ errorMessage: 'Invalid credentials' });
         }
-        req.session.user = { id: user._id, fullName: user.fullName };
+        req.session.user = { userId: user._id, fullName: user.fullName };
         req.session.save((err) => {
             if (err) {
                 console.error('Session save error:', err);
-                return res.status(500).send({ message: "Session save error" });
+                return res.status(500).send({ errorMessage: "Session save error", success : false });
             }
-            return res.status(200).send({ message: "Logged in successfully" });
+            return res.status(200).send({ message: "Logged in successfully", success : true });
         });
         // return res.status(200).send({ message: "Logged in successfully" }); 
     } catch (err) {

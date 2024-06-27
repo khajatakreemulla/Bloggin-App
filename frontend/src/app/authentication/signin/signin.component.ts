@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
   @Output() signInSuccess = new EventEmitter<string>()
   @Input() successMessage: string = '';
+  errorMessage : string = ""
 
   closeAlert() {
     this.successMessage = '';
   }
+  
+  closeErrorAlert(){
+    this.errorMessage = ""
+  }
+
   constructor(private authService : AuthenticationService, private router : Router) { }
 
   signIn(form : NgForm){
@@ -22,10 +28,13 @@ export class SigninComponent implements OnInit {
       console.log(form.value)
       let formData = form.value
       this.authService.login(formData.email, formData.password).subscribe(response=>{
-        if(response && response.message){
+        if(response && response.success){
           this.signInSuccess.emit(response.message)
           this.router.navigate(["/user/dashboard"])
         }
+      },error => {
+          this.errorMessage = error.error.errorMessage
+          console.log(this.errorMessage)
       })
     }
   }

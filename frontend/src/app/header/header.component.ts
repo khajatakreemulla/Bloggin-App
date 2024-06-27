@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  // @ViewChild("authModel") authModel: ElementRef | any;
   showSearch: boolean = false;
   isUserAuthenticated: boolean = false;
 
@@ -22,10 +21,8 @@ export class HeaderComponent implements OnInit {
   }
 
   handleSignInSuccess(){
-    const modalElement = this.elementRef.nativeElement.querySelector('.modal');
-    const backdropElement : HTMLElement | null = document.querySelector('.modal-backdrop');
-    modalElement.style.display = "none"
-    if(backdropElement) backdropElement.style.display = "none"
+    const buttonClose = this.elementRef.nativeElement.querySelector('.btn-close');
+    buttonClose.click()
   }
 
   isAuthenticated(){
