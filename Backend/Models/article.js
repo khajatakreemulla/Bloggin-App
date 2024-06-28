@@ -18,7 +18,7 @@ const ArticleSchema = new mongoose.Schema({
     author : {
         type : String
     }
-});
+}, {timestamps: true});
 
 ArticleSchema.set('toJSON', {
     transform: (doc, ret, options) => {

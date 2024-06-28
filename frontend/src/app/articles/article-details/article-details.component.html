@@ -1,20 +1,22 @@
-<!-- <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="article-detail">
-                <img src="{{ article.featuredImageUrl }}" class="img-fluid" alt="Article Image">
-                <h2>Article Title</h2>
-                <p class="article-description">{{ article.description }}</p>
+            <div class="article-detail mt-5">
+                <img [src]="article?.featuredImageUrl" class="img-fluid" alt="Article Image">
+                <br>
+                <br>
+                <h2>{{article.title}}</h2>
+                <p class="article-description" [innerHTML]="sanitizeHtml(article.description)"></p>
                 <div class="article-tags">
                     <span class="badge badge-primary">{{ article.tags }}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="dummy-content">
+            <div class="dummy-content mt-5">
                 <h3>Some Dummy Title</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod dolor nec libero ultricies.</p>
             </div>
         </div>
     </div>
-</div> -->
+</div>
