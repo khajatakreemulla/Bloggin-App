@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { Router } from '@angular/router';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-create-article',
@@ -10,13 +11,20 @@ import { Router } from '@angular/router';
 })
 export class CreateArticleComponent implements OnInit {
 
+  editorConfig: AngularEditorConfig = {
+    editable : true,
+    height: "200px",
+    toolbarHiddenButtons: [
+      ['insertImage', "insertVideo"]
+    ]
+  }
+
   formData = {
     title: '',
     description: '',
     tags: '',
     featuredImageUrl: ''
   };
-
 
   onSubmit() {
     if(this.formData){

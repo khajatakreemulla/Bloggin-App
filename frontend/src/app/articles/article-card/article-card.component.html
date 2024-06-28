@@ -1,4 +1,5 @@
-<div class="card" (click)="goToDetails(article.id)">
+<div class="card" (click)="goToDetails(article.id)" style="position: relative;">
+    <div class="tag-badge">{{ article.tags }}</div>
     <img [src]="article.imageUrl" class="card-img-top" alt="Card image">
     <div class="card-body">
       <h5 class="card-title">{{ article.title | slice:0:60 }}{{ article.title.length > 60 ? '...' : '' }}</h5>

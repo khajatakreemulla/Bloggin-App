@@ -10,7 +10,7 @@ export class ArticleCardComponent implements OnInit {
   @Input() article: any;
 
   goToDetails(id : string) {
-    this.router.navigate(["/articles/" + id])
+    this.router.navigate(["/article/" + id])
   }
 
   constructor(private router : Router) { }

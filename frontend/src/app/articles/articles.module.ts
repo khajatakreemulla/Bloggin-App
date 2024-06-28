@@ -10,6 +10,7 @@ import { EditorsPickComponent } from './editors-pick/editors-pick.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { FormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
   imports: [
     CommonModule,
     ArticlesRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularEditorModule
   ],
   exports: [
     LatestArticlesComponent,  // Exporting the component to be used in other modules

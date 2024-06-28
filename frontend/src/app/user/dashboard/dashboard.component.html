@@ -5,15 +5,15 @@
             <div *ngFor="let article of articles" class="card mb-3" style="cursor: pointer;" (click)="navigateToBlog(article.id)">
                 <div class="row g-0">
                 <div class="col-md-4">
-                    <img [src]="article.imageUrl" class="img-fluid rounded-start" alt="Blog Image">
+                    <img [src]="article.featuredImageUrl" class="img-fluid rounded-start" alt="Blog Image">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                     <h5 class="card-title">{{ article.title }}</h5>
-                    <p class="card-text">{{ article.content }}</p>
+                    <p class="card-text">{{ article.description | slice:0:300 }}</p>
                     </div>
                 </div>
-                </div>
+                </div>  
             </div>
         </div>
     </div>

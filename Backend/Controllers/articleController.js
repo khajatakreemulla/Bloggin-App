@@ -11,3 +11,12 @@ exports.createArticle = (req, res)=>{
         return res.status(500).send({ errorMessage: "Error creating article", error, success: false });
     })
 }
+
+exports.getArticleDetails = (req, res)=>{
+    var articleId = req.param("id")
+    Article.findById(articleId).then(article=>{
+        return res.status(200).send({article : article, success: true})
+    }).catch(error=>{
+        return res.status(500).send({ errorMessage: "Error in getting article", error, success: false });
+    })
+}
