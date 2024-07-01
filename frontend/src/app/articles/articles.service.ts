@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ArticlesService {
-  private apiUrl = 'https://devwrite-green.vercel.app/article';
+  private apiUrl = 'https://bloggin-app.onrender.com/article';
 
   createArticle(article : any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/write`, article, { withCredentials: true });

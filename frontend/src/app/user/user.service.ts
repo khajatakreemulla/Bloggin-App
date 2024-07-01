@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl = 'https://devwrite-green.vercel.app/user';
+  private apiUrl = 'https://bloggin-app.onrender.com/user';
 
   dashboard(): Observable<any> {
     return this.http.get(`${this.apiUrl}/dashboard`, {withCredentials : true})

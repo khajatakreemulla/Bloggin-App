@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 })
 export class AuthenticationService {
 
-  private apiUrl = 'https://devwrite-green.vercel.app/auth';
+  private apiUrl = 'https://bloggin-app.onrender.com/auth';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
