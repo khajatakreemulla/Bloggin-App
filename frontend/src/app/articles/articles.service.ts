@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ArticlesService {
-  private apiUrl = 'http://localhost:3000/article';
+  private apiUrl = 'https://devwrite-green.vercel.app/article';
 
   createArticle(article : any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/write`, article, { withCredentials: true });
@@ -14,6 +14,14 @@ export class ArticlesService {
 
   getArticleDetails(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`, {withCredentials : true})
+  }
+
+  getLatestArticles(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/latest`, {withCredentials: true})
+  }
+
+  advanceSearch(searchQueryString : string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/search?q=${searchQueryString}`, {withCredentials: true})
   }
 
   constructor(private http: HttpClient) { }

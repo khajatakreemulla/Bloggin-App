@@ -6,20 +6,30 @@
         <div class="col-md-8" *ngIf="articles.length > 0">
             <div class="card" (click)="goToDetails(articles[0].id)" style="position: relative;">
                 <div class="tag-badge">{{ articles[0].tags }}</div>
-                <img [src]="articles[0].imageUrl" class="card-img-top" alt="Card image">
+                <img [src]="articles[0].featuredImageUrl" class="card-img-top" alt="Card image">
                 <div class="card-body">
                     <h5 class="card-title">{{ articles[0].title | slice:0:60 }}{{ articles[0].title.length > 60 ? '...' : '' }}</h5>
-                    <p class="card-text">{{ articles[0].content | slice:0:120 }}{{ articles[0].content.length > 120 ? '...' : '' }}</p>
+                    <p class="card-text" [innerHTML]="articles[0].description.length > 200 ? sanitizeHtml(articles[0].description.slice(0, 300) + ' ...') : sanitizeHtml(articles[0].description)"></p>
+                    <div class="mt-3">
+                        <img [src]="articles[0].authorProfilePic" class="rounded-circle" alt="Author profile picture" style="width: 40px; height: 40px; object-fit: cover;">
+                        <br>
+                        <span>By <strong>{{ articles[0].authorName }}</strong></span> 
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4" *ngIf="articles.length > 1">
             <div class="card" (click)="goToDetails(articles[1].id)">
-                <div class="tag-badge">{{ articles[0].tags }}</div>
-                <img [src]="articles[1].imageUrl" class="card-img-top" alt="Card image">
+                <div class="tag-badge">{{ articles[1].tags }}</div>
+                <img [src]="articles[1].featuredImageUrl" class="card-img-top" alt="Card image">
                 <div class="card-body">
                     <h5 class="card-title">{{ articles[1].title | slice:0:60 }}{{ articles[0].title.length > 60 ? '...' : '' }}</h5>
-                    <p class="card-text">{{ articles[1].content | slice:0:120 }}{{ articles[0].content.length > 120 ? '...' : '' }}</p>
+                    <p class="card-text" [innerHTML]="articles[1].description.length > 200 ? sanitizeHtml(articles[1].description.slice(0, 300) + ' ...') : sanitizeHtml(articles[1].description)"></p>
+                    <div class="mt-3">
+                        <img [src]="articles[1].authorProfilePic" class="rounded-circle" alt="Author profile picture" style="width: 40px; height: 40px; object-fit: cover;">
+                        <br>
+                        <span>By <strong>{{ articles[1].authorName }}</strong></span> 
+                    </div>
                 </div>
             </div>
         </div>

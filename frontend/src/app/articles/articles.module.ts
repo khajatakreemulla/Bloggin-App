@@ -11,6 +11,7 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { FormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { SearchedArticlesComponent } from './searched-articles/searched-articles.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     TrendingArticlesComponent,
     EditorsPickComponent,
     ArticleDetailsComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    SearchedArticlesComponent
   ],
   imports: [
     CommonModule,

@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 })
 export class AuthenticationService {
 
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = 'https://devwrite-green.vercel.app/auth';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
@@ -40,8 +40,8 @@ export class AuthenticationService {
     );
   }
 
-  isAuthenticated(): Observable<{ success: boolean }> {
-    return this.http.get<{ success: boolean }>(`${this.apiUrl}/is-authenticated`, { withCredentials: true }).pipe(
+  isAuthenticated(): Observable<{ success: boolean, userProfilePic: string }> {
+    return this.http.get<{ success: boolean,  userProfilePic: string }>(`${this.apiUrl}/is-authenticated`, { withCredentials: true }).pipe(
       // Manually update the authentication status based on response message
       map(response => {
         this.isAuthenticatedSubject.next(response.success);

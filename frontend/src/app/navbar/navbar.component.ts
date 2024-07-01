@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../articles/articles.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticlesService, private router: Router) { }
+
+  advanceSearch(q: string){
+    this.router.navigate(['/article/search'], { queryParams: { q: q } });
+  }
 
   ngOnInit(): void {
   }

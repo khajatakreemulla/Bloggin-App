@@ -1,9 +1,13 @@
 <div class="card" (click)="goToDetails(article.id)" style="position: relative;">
-    <div class="tag-badge">{{ article.tags }}</div>
-    <img [src]="article.imageUrl" class="card-img-top" alt="Card image">
-    <div class="card-body">
-      <h5 class="card-title">{{ article.title | slice:0:60 }}{{ article.title.length > 60 ? '...' : '' }}</h5>
-      <p class="card-text">{{ article.content | slice:0:100 }}{{ article.content.length > 120 ? '...' : '' }}</p>
+  <div class="tag-badge">{{ article.tags }}</div>
+  <img [src]="article.featuredImageUrl" class="card-img-top" alt="Card image">
+  <div class="card-body">
+    <h5 class="card-title">{{ article.title | slice:0:60 }}{{ article.title.length > 60 ? '...' : '' }}</h5>
+    <p class="card-text" [innerHTML]="article.description.length > 200 ? sanitizeHtml(article.description.slice(0, 300) + ' ...') : sanitizeHtml(article.description)"></p>
+    <div class="mt-3">
+      <img [src]="article.authorProfilePic" class="rounded-circle" alt="Author profile picture" style="width: 40px; height: 40px; object-fit: cover;">
+      <br>
+      <span>By <strong>{{ article.authorName }}</strong></span> 
     </div>
+  </div>
 </div>
-  

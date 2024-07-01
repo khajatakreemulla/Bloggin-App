@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-card',
@@ -13,7 +14,11 @@ export class ArticleCardComponent implements OnInit {
     this.router.navigate(["/article/" + id])
   }
 
-  constructor(private router : Router) { }
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  constructor(private router : Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
   }

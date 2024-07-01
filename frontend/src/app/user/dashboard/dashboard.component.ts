@@ -12,8 +12,6 @@ export class DashboardComponent implements OnInit {
 
   articles: any = [] ;
 
-  articlesBackend = []
-
   navigateToBlog(id: string){
     this.router.navigate(["/article/" + id])
   }

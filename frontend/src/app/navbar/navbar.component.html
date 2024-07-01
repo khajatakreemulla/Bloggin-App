@@ -12,73 +12,71 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown1">
         <ul class="navbar-nav flex-wrap" style="font-size: 15px;">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Programming Languages
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item text-center" href="#">JavaScript</a></li>
-              <li><a class="dropdown-item text-center" href="#">Python</a></li>
-              <li><a class="dropdown-item text-center" href="#">Java</a></li>
-              <li><a class="dropdown-item text-center" href="#">C++</a></li>
-              <li><a class="dropdown-item text-center" href="#">C</a></li>
-              <li><a class="dropdown-item text-center" href="#">Go</a></li>
-              <li><a class="dropdown-item text-center" href="#">C#</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('javascript')">JavaScript</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('python')">Python</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('java')">Java</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('c++')">C++</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('c')">C</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('go')">Go</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('c#')">C#</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Web Development
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item text-center" href="#">HTML</a></li>
-              <li><a class="dropdown-item text-center" href="#">CSS</a></li>
-              <li><a class="dropdown-item text-center" href="#">Node.js</a></li>
-              <li><a class="dropdown-item text-center" href="#">React.js</a></li>
-              <li><a class="dropdown-item text-center" href="#">Angular</a></li>
-              <li><a class="dropdown-item text-center" href="#">Bootstrap</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('html')">HTML</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('css')">CSS</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('node')">Node.js</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('react')">React.js</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('angular')">Angular</a></li>
+              <li><a class="dropdown-item text-center" (click)="advanceSearch('bootstrap')">Bootstrap</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Software Engineering Practices
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item  text-center" href="#">Design patterns</a></li>
-              <li><a class="dropdown-item  text-center" href="#">(CI/CD)</a></li>
-              <li><a class="dropdown-item  text-center" href="#"> Testing strategies</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Software architecture</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Agile, Scrum methodologies</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('design patterns')">Design patterns</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('ci/cd')">(CI/CD)</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('testing strategies')"> Testing strategies</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('software architecture')">Software architecture</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('agile scrum')">Agile, Scrum methodologies</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               DevOps
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item  text-center" href="#">CCP (AWS, Azure, Google Cloud)</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Docker</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Kubernetes</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Logging and scalability.</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('aws azure google cloud')">CCP (AWS, Azure, Google Cloud)</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('docker')">Docker</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('kubernetes')">Kubernetes</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Mobile Development
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item  text-center" href="#">Flutter</a></li>
-              <li><a class="dropdown-item  text-center" href="#">React Native</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('flutter')">Flutter</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('react native')">React Native</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-center" href="#" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Machine Learning and AI
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
-              <li><a class="dropdown-item  text-center" href="#">TensorFlow</a></li>
-              <li><a class="dropdown-item  text-center" href="#">PyTorch</a></li>
-              <li><a class="dropdown-item  text-center" href="#">Data science</a></li>
-              <li><a class="dropdown-item  text-center" href="#">NLP</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('data science')">Data science</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('tensorflow')">TensorFlow</a></li>
+              <li><a class="dropdown-item  text-center" (click)="advanceSearch('pytorch')">PyTorch</a></li>
             </ul>
           </li>
         </ul>

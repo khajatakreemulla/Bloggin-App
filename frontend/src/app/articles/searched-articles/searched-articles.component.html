@@ -1,8 +1,7 @@
-<div *ngIf="this.articles.length < 1">No Articles on this topic</div>
 <div class="container">
     <div class="row justify-content-center">
+        <h2>Showing Articles of : {{this.searchQuery}}</h2>
         <div class="col-10">
-            <h1>Your Tech Blogs</h1>
             <div *ngFor="let article of articles" class="card mb-3" style="cursor: pointer;" (click)="navigateToBlog(article.id)">
                 <div class="row g-0">
                 <div class="col-md-4">

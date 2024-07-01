@@ -10,6 +10,7 @@ import { AuthenticationService } from '../authentication.service';
 export class SignupComponent implements OnInit {
   @Output() registrationSuccess = new EventEmitter<string>();
   errorMessage: string = '';
+  passNotMatch: string = "Passwords do not match!"
 
   onSubmit(form: NgForm) {
     if (form.valid) {

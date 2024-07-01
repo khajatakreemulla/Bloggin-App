@@ -7,10 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:3000/user';
+  private apiUrl = 'https://devwrite-green.vercel.app/user';
 
   dashboard(): Observable<any> {
     return this.http.get(`${this.apiUrl}/dashboard`, {withCredentials : true})
+  }
+
+  getUserDetails(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile`, {withCredentials: true})
+  }
+
+  updateUserDetails(data: Object, userId: string,): Observable<any> {
+    return this.http.post(`${this.apiUrl}/profile/${userId}`, data, {withCredentials: true})
   }
 
   constructor(private http : HttpClient) { }
