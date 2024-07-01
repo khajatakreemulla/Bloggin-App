@@ -16,8 +16,20 @@ const UserSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String
+    },
+    bio: {
+        type: String
     }
 }, {timestamps: true});
+
+UserSchema.set('toJSON', {
+    transform: (doc, ret, options) => {
+        ret.id = ret._id.toString();
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+    }
+});
 
 UserSchema.pre("save", function(next){
     const User = this

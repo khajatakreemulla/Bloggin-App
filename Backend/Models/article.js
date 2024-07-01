@@ -17,6 +17,12 @@ const ArticleSchema = new mongoose.Schema({
     },
     author : {
         type : String
+    },
+    authorProfilePic : {
+        type : String
+    },
+    authorName : {
+        type : String
     }
 }, {timestamps: true});
 
@@ -28,5 +34,7 @@ ArticleSchema.set('toJSON', {
         return ret;
     }
 });
+
+ArticleSchema.index({ title: 'text', tags: 'text' });
 
 module.exports = mongoose.model('articles', ArticleSchema);

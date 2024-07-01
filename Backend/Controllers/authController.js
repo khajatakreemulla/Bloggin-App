@@ -40,7 +40,7 @@ exports.login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ errorMessage: 'Invalid credentials' });
         }
-        req.session.user = { userId: user._id, fullName: user.fullName };
+        req.session.user = { userId: user._id, fullName: user.fullName, profilePic: user.profilePic };
         req.session.save((err) => {
             if (err) {
                 console.error('Session save error:', err);
@@ -73,5 +73,5 @@ exports.logout = (req, res)=>{
 }
 
 exports.isAuthenticated = (req, res) => {
-    return res.status(200).send({ success: true });
+    return res.status(200).send({ success: true, userProfilePic : req.session.user.profilePic });
 }
