@@ -1,52 +1,52 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
-
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  private apiUrl = 'https://bloggin-app.onrender.com/auth';
+  private apiUrl = `${environment.baseUrl}/auth`;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
     this.checkAuthenticationStatus().subscribe();
-   }
+  }
 
-  signup(email: string, fullName : string, password: string): Observable<any> {
+  signup(email: string, fullName: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/signup`, { email, fullName, password }, { withCredentials: true });
   }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password }, { withCredentials: true }).pipe(
-      // Manually update the authentication status based on response message
-      map(response => {
+      tap(response => {
+        console.log('Login response:', response);
         if (response.success) {
           this.isAuthenticatedSubject.next(true);
         }
-        return response;
-      })
+      }),
+      map(response => response)
     );
   }
 
   logout(): Observable<any> {
     return this.http.post(`${this.apiUrl}/logout`, {}, { withCredentials: true }).pipe(
-      map(response => {
-          this.isAuthenticatedSubject.next(false);
-        return response;
-      })
+      tap(response => {
+        console.log('Logout response:', response);
+        this.isAuthenticatedSubject.next(false);
+      }),
+      map(response => response)
     );
   }
 
   isAuthenticated(): Observable<{ success: boolean, userProfilePic: string }> {
-    return this.http.get<{ success: boolean,  userProfilePic: string }>(`${this.apiUrl}/is-authenticated`, { withCredentials: true }).pipe(
-      // Manually update the authentication status based on response message
-      map(response => {
+    return this.http.get<{ success: boolean, userProfilePic: string }>(`${this.apiUrl}/is-authenticated`, { withCredentials: true }).pipe(
+      tap(response => {
+        console.log('Is authenticated response:', response);
         this.isAuthenticatedSubject.next(response.success);
-        return response;
-      })
+      }),
+      map(response => response)
     );
   }
 
@@ -57,5 +57,4 @@ export class AuthenticationService {
   private checkAuthenticationStatus(): Observable<any> {
     return this.isAuthenticated();
   }
-
 }
