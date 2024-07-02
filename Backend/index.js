@@ -40,6 +40,7 @@ app.use(
       // 1000 * 60 * 60 * 24 Max age in milliseconds (1 day)
     })
   );
+  app.set('trust proxy', 1);
 
 // Connect to MongoDB
 mongoose.connect(config.mongoURI)

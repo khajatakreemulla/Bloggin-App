@@ -25,7 +25,6 @@ export class SigninComponent implements OnInit {
 
   signIn(form : NgForm){
     if (form.valid) {
-      console.log(form.value)
       let formData = form.value
       this.authService.login(formData.email, formData.password).subscribe(response=>{
         if(response && response.success){
