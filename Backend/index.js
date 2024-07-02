@@ -53,5 +53,6 @@ app.use("/user", userRoutes);
 app.use("/article", articleRoutes)
 
 app.listen(port, () => {
+    console.log(process.env.NODE_ENV)
     console.log(`Server is running on http://localhost:${port}`);
 });
