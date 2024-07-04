@@ -14,11 +14,15 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
+var whitelist = ["http://localhost:4200", config.frontEnd]
 app.use(cors({
-  origin: [
-    "http://localhost:4200",
-    config.frontEnd
-  ],
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
@@ -35,7 +39,8 @@ app.use(
       cookie: { 
           secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
           httpOnly: true, 
-          maxAge: 1000 * 60 * 60 * 24
+          maxAge: 1000 * 60 * 60 * 24,
+          sameSite: 'none'
       }, 
       // 1000 * 60 * 60 * 24 Max age in milliseconds (1 day)
     })

@@ -8,8 +8,9 @@
                 <h2>{{article?.title}}</h2>
                 <p class="article-description" [innerHTML]="sanitizeHtml(article?.description)"></p>
                 <div class="article-tags">
-                    <span class="badge badge-primary" *ngFor="let tag of article?.tags">{{ tag }}</span>
+                    Tags :  <span class="badge bg-info">{{ article?.tags }}</span>
                 </div>
+                <br>
             </div>
         </div>
         <div class="col-md-4">

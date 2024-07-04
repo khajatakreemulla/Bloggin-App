@@ -24,7 +24,7 @@
             <ng-container *ngIf="isAuthenticated(); else signInTemplate">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-center" id="navbarDropdownCategory1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img [src]="this.authorProfilePic" class="navbar-profile-img">
+                  <img [src]="this.user.profilePic" class="navbar-profile-img">
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategory1">
                   <li><a class="dropdown-item text-center" routerLink="/user/write"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -32,7 +32,7 @@
                   </svg> Write</a></li>
                   <hr>
                   <li><a class="dropdown-item text-center" routerLink="/user/profile">Profile</a></li>
-                  <li><a class="dropdown-item text-center" routerLink="/user/dashboard">Dashboard</a></li>
+                  <li><a class="dropdown-item text-center" [routerLink]="this.user.isAdmin ? '/admin/dashboard' : '/user/dashboard'">Dashboard</a></li>
                   <li><a class="dropdown-item text-center" style="cursor: pointer;" (click)="logout()">Log out</a></li>
                 </ul>
               </li>

@@ -12,6 +12,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { EditorialTeamComponent } from './editorial-team/editorial-team.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserModule } from './user/user.module';
     AppRoutingModule,
     ArticlesModule,
     AuthenticationModule,
-    UserModule
+    UserModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

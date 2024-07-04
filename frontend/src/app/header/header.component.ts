@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Router } from '@angular/router';
 import { ArticlesService } from '../articles/articles.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
   showSearch: boolean = false;
   isUserAuthenticated: boolean = false;
   authorProfilePic: string = ""
+  user:any = {}
 
   toggleSearch() {
     this.showSearch = !this.showSearch;
@@ -39,15 +41,16 @@ export class HeaderComponent implements OnInit {
     })
   } 
 
-  constructor(private elementRef: ElementRef, private router : Router, private authService : AuthenticationService, private articleService: ArticlesService) { }
+  constructor(private elementRef: ElementRef, private router : Router, private authService : AuthenticationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.authService.getAuthenticationStatus().subscribe(authenticated=>{
       this.isUserAuthenticated = authenticated
     })
 
-    this.authService.isAuthenticated().subscribe(response=>{
-      this.authorProfilePic = response.userProfilePic
+    this.userService.getUserDetails().subscribe(response=>{
+      this.authorProfilePic = response.user.profilePic
+      this.user = response.user
     })
   }
 

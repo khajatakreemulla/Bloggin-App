@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Publish</th>
+          <th>Feature</th>
+          <th>Editor Pick</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles">
+          <td><a [routerLink]="'/article/' + article.id">{{ article.title }}</a></td>
+          <td><button class="btn btn-primary" (click)="publishArticle(article.id)">Publish</button></td>
+          <td><button class="btn btn-success" (click)="featureArticle(article.id)">Feature</button></td>
+          <td><button class="btn btn-info" (click)="markAsEditorPick(article.id)">Editor Pick</button></td>
+          <td><button class="btn btn-danger" (click)="deleteArticle(article.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
