@@ -7,6 +7,7 @@ router.post("/write", isAuthenticated, articleController.createArticle)
 router.get("/latest", articleController.getLatestArticles)
 router.get("/search", articleController.advanceSearch)
 router.get("/:id", articleController.getArticleDetails)
+router.post("/:id/update", isAuthenticated, articleController.updateArticle)
 
 
 module.exports = router;

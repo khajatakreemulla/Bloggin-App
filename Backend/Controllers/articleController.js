@@ -16,8 +16,22 @@ exports.createArticle = (req, res)=>{
     })
 }
 
+exports.updateArticle = (req, res)=>{
+    var article = req.body;
+    var articleId = req.params.id;
+    var userId = req.session.user.userId
+    if(article.author !== userId){
+        return res.status(200).send({errorMessage: "Not allowed to update article", success : false})
+    }
+    Article.findByIdAndUpdate(articleId, article).then(updatedArticle=>{
+        return res.status(201).send({article : updatedArticle, success: true})
+    }).catch(error=>{
+        return res.status(500).send({ errorMessage: "Error updating article", error, success: false });
+    })
+}
+
 exports.getArticleDetails = (req, res)=>{
-    var articleId = req.param("id")
+    var articleId = req.params.id
     Article.findById(articleId).then(article=>{
         return res.status(200).send({article : article, success: true})
     }).catch(error=>{

@@ -23,6 +23,19 @@ const ArticleSchema = new mongoose.Schema({
     },
     authorName : {
         type : String
+    },
+    publishingStatus : {
+        type : String,
+        default : 'draft',
+        enum : ['draft', 'published']
+    },
+    featured : {
+        type: Boolean,
+        default : false
+    },
+    numberOfClicks: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true});
 

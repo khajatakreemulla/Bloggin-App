@@ -28,6 +28,7 @@ export class SearchedArticlesComponent implements OnInit {
     this.articleService.advanceSearch(query).subscribe(response=>{
       if(response && response.success && response.articles){
         this.searchQuery = query
+        console.log(response.articles)
         this.articles = response.articles
       }
     })

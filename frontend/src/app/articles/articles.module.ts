@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SearchedArticlesComponent } from './searched-articles/searched-articles.component';
+import { ArticleUpdateComponent } from './article-update/article-update.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SearchedArticlesComponent } from './searched-articles/searched-articles
     EditorsPickComponent,
     ArticleDetailsComponent,
     CreateArticleComponent,
-    SearchedArticlesComponent
+    SearchedArticlesComponent,
+    ArticleUpdateComponent
   ],
   imports: [
     CommonModule,

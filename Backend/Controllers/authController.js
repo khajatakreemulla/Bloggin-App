@@ -40,7 +40,7 @@ exports.login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ errorMessage: 'Invalid credentials' });
         }
-        req.session.user = { userId: user._id, fullName: user.fullName, profilePic: user.profilePic };
+        req.session.user = { userId: user._id, fullName: user.fullName, profilePic: user.profilePic, isAdmin: user.isAdmin };
         req.session.save((err) => {
             if (err) {
                 console.error('Session save error:', err);

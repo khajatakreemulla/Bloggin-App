@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <h2>Showing Articles of : {{this.searchQuery}}</h2>
         <div class="col-10">
-            <div *ngFor="let article of articles" class="card mb-3" style="cursor: pointer;" (click)="navigateToBlog(article.id)">
+            <div *ngFor="let article of articles" class="card mb-3" style="cursor: pointer;" (click)="navigateToBlog(article._id)">
                 <div class="row g-0">
                 <div class="col-md-4">
                     <img [src]="article.featuredImageUrl" class="img-fluid rounded-start" style="height: 100%;" alt="Blog Image">

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const md5 = require("md5")
-
+var editorialTeamEmails = ["harshaggarwal@gmail.com", "amitagarwal785@gmail.com", "shradda123@gmail.com", "anish5781@gmail.com", "varunkrishna@gmail.com", "arun487@gmail.com", "srinivas@gmail.com", "78692ishaq@gmail.com"]
 const UserSchema = new mongoose.Schema({
     email : {
         type : String,
@@ -19,6 +19,9 @@ const UserSchema = new mongoose.Schema({
     },
     bio: {
         type: String
+    },
+    isAdmin : {
+        type : Boolean
     }
 }, {timestamps: true});
 
@@ -34,6 +37,11 @@ UserSchema.set('toJSON', {
 UserSchema.pre("save", function(next){
     const User = this
     const emailHash = User.email.trim().toLowerCase()
+    if(editorialTeamEmails.includes(User.email)){
+        User.isAdmin = true
+    } else {
+        User.isAdmin = false
+    }
     User.profilePic = 'https://www.gravatar.com/avatar/'+ md5(emailHash)+ '?d=identicon'
     return next()
 })

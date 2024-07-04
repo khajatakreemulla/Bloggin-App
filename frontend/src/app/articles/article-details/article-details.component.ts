@@ -9,7 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./article-details.component.css']
 })
 export class ArticleDetailsComponent implements OnInit {
-  article : any
+  article : any = {}
   constructor(private articleService : ArticlesService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
   
   ngOnInit(): void {
