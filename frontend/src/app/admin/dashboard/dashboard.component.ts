@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(private articleService: ArticlesService) { }
 
   ngOnInit(): void {
-    this.articleService.getArticleList('latest').subscribe(response=>{
+    this.articleService.getArticleList('admin').subscribe(response=>{
       if(response && response.success && response.articles){
         this.articles = response.articles
       }
