@@ -39,8 +39,17 @@ exports.getArticleDetails = (req, res)=>{
     })
 }
 
-exports.getLatestArticles = (req, res)=>{
-    Article.find({}).sort({createdAt: -1}).then(articles => {
+exports.getArticleList = (req, res)=>{
+    var query = {
+        publishingStatus : "published"
+    }
+    if(req.query.featured){
+        query.featured = true
+    }
+    if(req.query.editorPick){
+        query.editorsPick = true
+    }
+    Article.find(query).sort({createdAt: -1}).then(articles => {
         return res.status(200).send({articles : articles, success: true})
     }).catch(error=>{
         return res.status(500).send({ errorMessage: "Error in getting articles", error, success: false });

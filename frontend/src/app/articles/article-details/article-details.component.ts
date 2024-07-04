@@ -10,6 +10,10 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class ArticleDetailsComponent implements OnInit {
   article : any = {}
+  latestArticles : any = [];
+  featuredArticles : any = [];
+  editorsPicks : any = [];
+
   constructor(private articleService : ArticlesService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
   
   ngOnInit(): void {
@@ -23,6 +27,21 @@ export class ArticleDetailsComponent implements OnInit {
           }
         });
       }
+      this.articleService.getArticleList('latest').subscribe(response=>{
+          if(response && response.success && response.articles){
+            this.latestArticles = response.articles.filter((articleResponse: { id: string | null; }) => articleId !== articleResponse.id)
+          }
+      })
+      this.articleService.getArticleList('featured').subscribe(response=>{
+        if(response && response.success && response.articles){
+          this.featuredArticles = response.articles.filter((articleResponse: { id: string | null; }) => articleId !== articleResponse.id)
+        }
+      })
+      this.articleService.getArticleList('editorPick').subscribe(response=>{
+        if(response && response.success && response.articles){
+          this.editorsPicks = response.articles.filter((articleResponse: { id: string | null; }) => articleId !== articleResponse.id)
+        }
+      })
     });
   }
 

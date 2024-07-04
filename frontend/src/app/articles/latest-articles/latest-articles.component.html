@@ -1,9 +1,8 @@
-<div class="container mt-5">
-    
+<div *ngIf="articles.length > 0" class="container mt-5">
     <h1 class="text-center">Latest</h1>
     <hr>
     <div class="row">
-        <div class="col-md-8" *ngIf="articles.length > 0">
+        <div class="col-md-8">
             <div class="card" (click)="goToDetails(articles[0].id)" style="position: relative;">
                 <div class="tag-badge">{{ articles[0].tags }}</div>
                 <img [src]="articles[0].featuredImageUrl" class="card-img-top" alt="Card image">

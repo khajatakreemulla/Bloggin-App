@@ -5,17 +5,43 @@
                 <img [src]="article?.featuredImageUrl" class="img-fluid" alt="Article Image">
                 <br>
                 <br>
-                <h2>{{article.title}}</h2>
-                <p class="article-description" [innerHTML]="sanitizeHtml(article.description)"></p>
+                <h2>{{article?.title}}</h2>
+                <p class="article-description" [innerHTML]="sanitizeHtml(article?.description)"></p>
                 <div class="article-tags">
-                    <span class="badge badge-primary">{{ article.tags }}</span>
+                    <span class="badge badge-primary" *ngFor="let tag of article?.tags">{{ tag }}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="dummy-content mt-5">
-                <h3>Some Dummy Title</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod dolor nec libero ultricies.</p>
+            <div class="mt-5">
+                <h3>Latest Articles</h3>
+                <ul class="list-unstyled">
+                    <li *ngFor="let latest of latestArticles">
+                        <a [routerLink]="['/article', latest.id]" class="text-decoration-none">{{ latest.title }}
+                        <p class="card-text ms-3" [innerHTML]="sanitizeHtml(latest.description.length > 200 ? latest.description.slice(0, 100) + ' ...' : latest.description)"></p></a>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-5">
+                <h3>Featured Articles</h3>
+                <ul class="list-unstyled">
+                    <li *ngFor="let featured of featuredArticles">
+                        <a [routerLink]="['/article', featured.id]" class="text-decoration-none">{{ featured.title }}
+                        <p class="card-text ms-3" [innerHTML]="sanitizeHtml(featured.description.length > 200 ? featured.description.slice(0, 100) + ' ...' : featured.description)"></p></a>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-5">
+                <h3>Editor's Picks</h3>
+                <ul class="list-unstyled">
+                    <li *ngFor="let pick of editorsPicks">
+                        <a [routerLink]="['/article', pick.id]" class="text-decoration-none">{{ pick.title }}
+                        <p class="card-text ms-3" [innerHTML]="sanitizeHtml(pick.description.length > 200 ? pick.description.slice(0, 100) + ' ...' : pick.description)"></p></a>
+                        <hr>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

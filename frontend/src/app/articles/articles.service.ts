@@ -21,8 +21,8 @@ export class ArticlesService {
     return this.http.get<any>(`${this.apiUrl}/${id}`, {withCredentials : true})
   }
 
-  getLatestArticles(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/latest`, {withCredentials: true})
+  getArticleList(query: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/list?${query}=true`, {withCredentials: true})
   }
 
   advanceSearch(searchQueryString : string): Observable<any> {

@@ -52,7 +52,7 @@ export class LatestArticlesComponent implements OnInit {
   constructor(private router : Router, private articleService : ArticlesService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.articleService.getLatestArticles().subscribe(response=>{
+    this.articleService.getArticleList('latest').subscribe(response=>{
       if(response && response.success && response.articles){
         this.articles = response.articles
       }
