@@ -33,6 +33,14 @@ const ArticleSchema = new mongoose.Schema({
         type: Boolean,
         default : false
     },
+    editorPick : {
+        type : Boolean,
+         default : false
+    },
+    deleted : {
+        type :Boolean,
+        default: false
+    },
     numberOfClicks: {
         type: Number,
         default: 0

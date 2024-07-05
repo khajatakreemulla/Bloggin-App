@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArticlesService } from 'src/app/articles/articles.service';
 
 @Component({
@@ -9,11 +10,39 @@ import { ArticlesService } from 'src/app/articles/articles.service';
 export class DashboardComponent implements OnInit {
   articles : any = []
 
-  publishArticle(id: string){}
-  featureArticle(id: string){}
-  markAsEditorPick(id: string){}
-  deleteArticle(id: string){}
-  constructor(private articleService: ArticlesService) { }
+  publishArticle(article: any, id: string){
+    article.publishingStatus = "published"
+    this.articleService.updateArticle(article, id).subscribe(response=>{
+      if(response && response.success && response.article){
+        this.router.navigate(['/admin/dashboard'])
+      }
+    })
+  }
+  featureArticle(article:any, id: string){
+    article.featured = true
+    this.articleService.updateArticle(article, id).subscribe(response=>{
+      if(response && response.success && response.article){
+        this.router.navigate(['/admin/dashboard'])
+      }
+    })
+  }
+  markAsEditorPick(article: any, id: string){
+    article.editorPick = true
+    this.articleService.updateArticle(article, id).subscribe(response=>{
+      if(response && response.success && response.article){
+        this.router.navigate(['/admin/dashboard'])
+      }
+    })
+  }
+  deleteArticle(article:any, id: string){
+    article.deleted = true
+    this.articleService.updateArticle(article, id).subscribe(response=>{
+      if(response && response.success && response.article){
+        this.router.navigate(['/admin/dashboard'])
+      }
+    })
+  }
+  constructor(private articleService: ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
     this.articleService.getArticleList('admin').subscribe(response=>{

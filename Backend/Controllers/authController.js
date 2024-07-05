@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
             return res.status(400).json({ errorMessage: 'Invalid credentials' });
         }
         req.session.user = { userId: user._id, fullName: user.fullName, profilePic: user.profilePic, isAdmin: user.isAdmin };
-        req.session.save((err) => {
+        req.session.save((err) => { 
             if (err) {
                 console.error('Session save error:', err);
                 return res.status(500).send({ errorMessage: "Session save error", success : false });

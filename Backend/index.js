@@ -16,13 +16,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 var whitelist = ["http://localhost:4200", config.frontEnd]
 app.use(cors({
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
+  origin: whitelist,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
@@ -40,7 +34,7 @@ app.use(
           secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
           httpOnly: true, 
           maxAge: 1000 * 60 * 60 * 24,
-          sameSite: 'none'
+          sameSite : "none"
       }, 
       // 1000 * 60 * 60 * 24 Max age in milliseconds (1 day)
     })
@@ -52,6 +46,7 @@ mongoose.connect(config.mongoURI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
+    console.log(config.mongoURI)
 // Routes
 app.use('/auth', authRoutes);
 app.use("/user", userRoutes); 

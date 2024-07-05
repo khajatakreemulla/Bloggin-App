@@ -12,10 +12,10 @@
       <tbody>
         <tr *ngFor="let article of articles">
           <td><a [routerLink]="'/article/' + article.id">{{ article.title }}</a></td>
-          <td><button class="btn btn-primary" (click)="publishArticle(article.id)">Publish</button></td>
-          <td><button class="btn btn-success" (click)="featureArticle(article.id)">Feature</button></td>
-          <td><button class="btn btn-info" (click)="markAsEditorPick(article.id)">Editor Pick</button></td>
-          <td><button class="btn btn-danger" (click)="deleteArticle(article.id)">Delete</button></td>
+          <td><button class="btn btn-primary" *ngIf="article.publishingStatus !== 'published'" (click)="publishArticle(article, article.id)">Publish</button></td>
+          <td><button class="btn btn-success" *ngIf="!article.featured" (click)="featureArticle(article, article.id)">Feature</button></td>
+          <td><button class="btn btn-info" *ngIf="article.editorPick" (click)="markAsEditorPick(article, article.id)">Editor Pick</button></td>
+          <td><button class="btn btn-danger" *ngIf="!article.deleted" (click)="deleteArticle(article, article.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>

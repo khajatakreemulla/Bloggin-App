@@ -20,7 +20,12 @@ exports.updateArticle = (req, res)=>{
     var article = req.body;
     var articleId = req.params.id;
     var userId = req.session.user.userId
-    if(article.author !== userId){
+    if(!req.session.user.isAdmin){
+        delete article.publishingStatus;
+        delete article.editorPick;
+        delete article.featured
+    }
+    if((article.author !== userId) && !req.session.user.isAdmin){
         return res.status(200).send({errorMessage: "Not allowed to update article", success : false})
     }
     Article.findByIdAndUpdate(articleId, article).then(updatedArticle=>{
@@ -41,7 +46,10 @@ exports.getArticleDetails = (req, res)=>{
 
 exports.getArticleList = (req, res)=>{
     var query = {
-        publishingStatus : "published"
+        deleted : false
+    }
+    if(!req.query.admin){
+        query.publishingStatus = "published"
     }
     if(req.query.featured){
         query.featured = true
