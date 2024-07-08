@@ -55,7 +55,7 @@ exports.getArticleList = (req, res)=>{
         query.featured = true
     }
     if(req.query.editorPick){
-        query.editorsPick = true
+        query.editorPick = true
     }
     Article.find(query).sort({createdAt: -1}).then(articles => {
         return res.status(200).send({articles : articles, success: true})
@@ -69,6 +69,7 @@ exports.advanceSearch = (req, res)=>{
     Article.aggregate([
         {
             $match: {
+                deleted : false,
                 $or: [
                     { title: { $regex: searchText, $options: 'i' } },
                     { tags: { $regex: searchText, $options: 'i' } }
