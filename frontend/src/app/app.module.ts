@@ -13,6 +13,8 @@ import { EditorialTeamComponent } from './editorial-team/editorial-team.componen
 import { FooterComponent } from './footer/footer.component';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AdminModule } from './admin/admin.module';
     NavbarComponent,
     EditorialTeamComponent,
     FooterComponent,
+    AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
