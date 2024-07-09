@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -6,7 +6,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
-  styleUrls: ['./article-details.component.css']
+  styleUrls: ['./article-details.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ArticleDetailsComponent implements OnInit {
   article : any = {}
